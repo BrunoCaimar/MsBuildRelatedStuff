@@ -1,0 +1,8 @@
+Get your fresh version here 
+https://github.com/loresoft/msbuildtasks
+
+or Using Nu-Get 
+
+Install-Package MSBuildTasks
+
+ 

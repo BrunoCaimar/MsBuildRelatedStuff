@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="VersionInfo" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{90A2619E-ED78-4298-8A1D-72AC2C5C71A2}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+  <Target Name="Version">
+    <Version VersionFile="VersionControl.txt" BuildType="Automatic" RevisionType="Increment">
+      <Output TaskParameter="Major" PropertyName="Major" />
+      <Output TaskParameter="Minor" PropertyName="Minor" />
+      <Output TaskParameter="Build" PropertyName="Build" />
+      <Output TaskParameter="Revision" PropertyName="Revision" />
+    </Version>
+    <Message Text="Version: $(Major).$(Minor).$(Build).$(Revision)" />
+  </Target>
+  <Target Name="AssemblyInfo">
+    <AssemblyInfo CodeLanguage="CS" OutputFile="AssemblyInfo.cs" AssemblyTitle="Assembly Title" AssemblyDescription="Assembly Description." AssemblyConfiguration="" AssemblyCompany="Assembly Company" AssemblyProduct="Assembly Product" AssemblyCopyright="Copyright ©  2012" AssemblyTrademark="" ComVisible="true" Guid="620d2828-7604-48e5-b99b-72d567b25732" AssemblyVersion="1.0.3.0" AssemblyFileVersion="1.1.$(Revision).$(Build)" AssemblyInformationalVersion="1.1.$(Revision).$(Build)" />
+  </Target>
+  <Target Name="CopyAssemblyInfo">
+    <Copy SourceFiles="AssemblyInfo.cs" DestinationFolder="..\DesignerCommands\Properties" />
+  </Target>
+  <Target Name="BuildSolution">
+    <MSBuild Projects="Path2YourSolution.sln" Properties="Configuration=Release">
+    </MSBuild>
+  </Target>
+  <Target Name="VersionInfo">
+    <CallTarget Targets="Version" />
+    <CallTarget Targets="AssemblyInfo" />
+    <CallTarget Targets="CopyAssemblyInfo" />
+  </Target>
+  <ItemGroup>
+    <Content Include="ReleaseNotes.txt" />
+  </ItemGroup>
+</Project>

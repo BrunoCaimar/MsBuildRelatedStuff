@@ -1,0 +1,70 @@
+**** Informações importantes sobre o Gerador de Setup's ****
+--------------------------------------------------------------------------------
+
+** Gerando o setup para todos os ambientes (PJH, PLMH, PLMT)
+Para gerar os setups previamente configurados para os ambientes hoje conhecidos 
+basta executar o arquivo PLM_GerarSetup_TODOS.bat 
+
+--> Será gerada um novo número de versão
+--> Os setups serão gerados na pasta \SETUP
+
+** Gerando o setup para um ambiente especifico
+Execute o arquivo PLM_GerarSetup_NOME_DO_AMBIENTE.Bat.
+
+--> Será gerada um novo número de versão
+--> O setup será gerado na pasta \SETUP
+
+** Gerando o setup sem gerar um novo número de versão
+Execute o arquivo PLM_GerarSetup.bat conforme exemplo abaixo:
+  PLM_GerarSetup.bat NOME_DO_AMBIENTE N
+
+--> O setup será gerado na pasta \SETUP
+
+#### ATENÇÃO #### 
+#### SEMPRE VERIFIQUE A SAÍDA DO SCRIPT PARA SE CERTIFICAR QUE NÃO HOUVE NENHUM
+#### ERRO NA GERAÇÃO DO(S) SETUP(S) 
+
+--------------------------------------------------------------------------------
+**** Informações gerais sobre o processo de geração de setup **** 
+
+O processo de geração dos setup's é composto por diversos arquivos, conforme descrito abaixo:
+
+\PLM_GerarSetup.bat
+Arquivo que contém os passos a serem executados para a geração do setup.  
+
+\VersionControl.txt
+Contém o número de versão atual do projeto
+
+\PLMVersionInfo.proj
+Projeto no formato MSBUILD que é responsável pela geração do AssemblyInfo.cs com as informações da nova versão.
+
+\Config
+Diretório onde estão os arquivos de configuração de cada um dos ambientes. 
+ 
+\Setup
+Diretório onde os arquivos de setup serão gerados
+
+\Setup\UninstallExtDesigner.bat
+BATCH com atalho para remoção da instalação do projeto (Wrapper para MSIEXEC /X)
+
+\PLM_GerarSetup_PLMT.bat
+Wrapper para geração do setup para o ambiente PLMT 
+
+\PLM_GerarSetup_PLMH.bat
+Wrapper para geração do setup para o ambiente PLMH
+
+\PLM_GerarSetup_PJH.bat
+Wrapper para geração do setup para o ambiente PJH
+
+\PLM_GerarSetup_TODOS.bat
+Wrapper para geração do setup para todos os ambientes 
+ 
+--------------------------------------------------------------------------------
+
+ToDo:
+
+- Limpeza (Apagar arquivos antes da execução para evitar erros de analise)
+- Integrar com SVN
+- ReleaseNotes
+
+2011-05-30 Bruno Caimar
