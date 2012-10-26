@@ -36,6 +36,7 @@ namespace AssemblyInfoConsole
 
             Console.WriteLine("{0} -- {1} -- {2}", testClassassemblyVersion, testClassfileVersion, testClassproductVersion);
 
+            Console.WriteLine(DateTime.Parse("2012-01-01 00:00:00"));
         }
 
     }

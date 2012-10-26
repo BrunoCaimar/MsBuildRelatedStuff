@@ -64,9 +64,11 @@
       *** This is JUST a sample. It's not the best way to use this. ***
       
       Build Number - Automatic - Days since start date (Default: new DateTime(2000, 1, 1)) You can change it setting StartDate property
-      Revision Number - Increment (++)
+      Build Number - Increment - ++
+	  Revision Number - Increment (++)
+	  Revision Number - Fraction of seconds of the current time
     -->
-    <Version VersionFile="Properties\AssemblyFileVersion.txt" BuildType="Automatic" RevisionType="Increment">
+    <Version VersionFile="Properties\AssemblyFileVersion.txt" BuildType="Increment" RevisionType="Automatic" >
       <Output TaskParameter="Major" PropertyName="Major" />
       <Output TaskParameter="Minor" PropertyName="Minor" />
       <Output TaskParameter="Build" PropertyName="Build" />
