@@ -1,0 +1,34 @@
+$(MSBuildBinPath) is set to the ToolsPath value that is specified either in the registry or in the configuration file where the ToolsVersion is defined. The $(MSBuildToolsPath) setting in the registry or the configuration file specifies the location of the Toolset. In the project file, this maps to the $(MSBuildBinPath) property, and also to the $(MSBuildToolsPath) property.
+
+$(MSBuildToolsPath) is a reserved property that is supplied by the MSBuildToolsPath property that is specified in the configuration file. (This property replaces $(MSBuildBinPath). However, $(MSBuildBinPath) is carried forward for compatibility.) 
+
+MSBuildProjectDirectory	--> The absolute path of the directory where the project file is located, for example, C:\MyCompany\MyProduct.
+
+MSBuildProjectFile --> The complete file name of the project file, including the file name extension, for example, MyApp.proj.
+
+MSBuildProjectExtension --> The file name extension of the project file, including the period, for example, .proj.
+
+MSBuildProjectFullPath --> The absolute path and complete file name of the project file, for example, C:\MyCompany\MyProduct\MyApp.proj.
+
+MSBuildProjectName --> The file name of the project file without the file name extension, for example, MyApp.
+
+MSBuildBinPath --> The absolute path of the folder where the MSBuild binaries that are currently being used are located, for example, C:\Windows\Microsoft.Net\Framework\v2.0. This property is useful if you have to refer to files in the MSBuild directory.
+
+MSBuildProjectDefaultTargets  --> The complete list of targets that are specified in the DefaultTargets attribute of the Project element. For example, the following Project element would have an MSBuildDefaultTargets property value of A;B;C.
+<Project DefaultTargets="A;B;C" >
+
+MSBuildExtensionsPath  --> The MSBuild subfolder under the \Program Files\ or \Program Files (x86) folder. This path always points to the Program Files of the same bitness as the window you are currently running in. For example, for a 32-bit window on a 64-bit machine, the path is to the Program Files (x86) folder. For a 64-bit window on a 64-bit machine, the path is to the Program Files folder. See also MSBuildExtensionsPath32 and MSBuildExtensionsPath64.
+
+This location is a useful place to put custom target files. For example, your target files could be installed at \Program Files\MSBuild\MyFiles\Northwind.targets and then imported in project files by using the following XML.
+
+<Import Project="$(MSBuildExtensionsPath)\MyFiles\Northwind.targets"/>
+
+Note   You can set the environment variable MSBUILDLEGACYEXTENSIONSPATH to a non-null value to enable the behavior of MSBuildExtensionsPath in previous versions.
+
+MSBuildExtensionsPath32 --> The MSBuild subfolder under the \Program Files\ or \Program Files (x86) folder. This path always points to the 32-bit Program Files folder. For example, on a 32-bit machine, the path is to the Program Files folder. For a 64-bit machine, the path is to the Program Files (x86) folder. See also MSBuildExtensionsPath and MSBuildExtensionsPath64.
+
+MSBuildExtensionsPath64 --> The MSBuild subfolder under the \Program Files\ folder. This path always points to the 64-bit Program Files folder. on a 64-bit machine. For a 32-bit machine, this path is blank. See also MSBuildExtensionsPath and MSBuildExtensionsPath32.
+
+MSBuildStartupDirectory --> The absolute path of the folder where MSBuild is invoked.
+
+This lets you go to any point in a project tree and build everything below that point without having to create "dirs.proj"-type files in every directory. Instead, you have just one project, as in this example named c:\traversal.proj:
