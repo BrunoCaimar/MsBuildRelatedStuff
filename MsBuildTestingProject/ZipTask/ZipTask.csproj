@@ -58,6 +58,8 @@
        Other similar extension points exist, see Microsoft.Common.targets.
        -->
   <Target Name="BeforeBuild">
+    <Message Importance="high" Text="MSBuildProjectDirectory: $(MSBuildProjectDirectory)" />
+    <Message Importance="high" Text=":TargetDir: $(TargetDir) :ProjectDir:$(ProjectDir) :SolutionDir:$(SolutionDir) :PlatformName:$(PlatformName)" />
   </Target>
 
   <Target Name="Clean">
